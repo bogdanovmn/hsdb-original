@@ -9,6 +9,8 @@ CREATE TABLE collections (
 	PRIMARY KEY (id),
 	UNIQUE  KEY (user_id, card_id),
 
+	KEY i_collections__card_id (card_id),
+
 	FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
 	FOREIGN KEY (card_id) REFERENCES cards (id) ON DELETE CASCADE
 
