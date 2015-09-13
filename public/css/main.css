@@ -1,0 +1,4 @@
+a,body,table,tr,td,li,p,input,textarea,pre{font-family:verdana,arial;font-size:8pt;color:#101610;padding:0;margin:0}
+table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
+
+div.main { width: 1024px; margin: 0 auto; }
