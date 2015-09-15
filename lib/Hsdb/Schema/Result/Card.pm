@@ -34,7 +34,7 @@ __PACKAGE__->add_columns(
     data_type => "tinyint",
     extra => { unsigned => 1 },
     is_foreign_key => 1,
-    is_nullable => 0,
+    is_nullable => 1,
   },
   "rarity_id",
   {
@@ -55,7 +55,7 @@ __PACKAGE__->add_columns(
     data_type => "tinyint",
     extra => { unsigned => 1 },
     is_foreign_key => 1,
-    is_nullable => 0,
+    is_nullable => 1,
   },
   "set_id",
   {
@@ -83,7 +83,12 @@ __PACKAGE__->belongs_to(
   "character",
   "Hsdb::Schema::Result::Character",
   { id => "character_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "RESTRICT",
+  },
 );
 __PACKAGE__->has_many(
   "collections",
@@ -95,7 +100,12 @@ __PACKAGE__->belongs_to(
   "race",
   "Hsdb::Schema::Result::Race",
   { id => "race_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "RESTRICT" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "RESTRICT",
+  },
 );
 __PACKAGE__->belongs_to(
   "rarity",
@@ -117,8 +127,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-13 23:10:34
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gRPbSilicSkkqqdpg2/aAQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-16 00:18:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DEjoU6P3gMckmYC/CHhngA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
