@@ -29,9 +29,9 @@ use constant MAP_RACE => {
 use constant MAP_RARITY => {
 	0 => 1,
 	1 => 2,
-	2 => 3,
-	3 => 4,
-	4 => 5,
+	3 => 3,
+	4 => 4,
+	5 => 5,
 };
 
 use constant MAP_SET => {
@@ -73,9 +73,9 @@ sub run {
 
 				my $our_card = schema->resultset('Card')->search({ name => $c->{name} })->first;
 				if ($our_card) {
-					if ($our_card->popularity ne $c->{popularity}) {
+					if ($our_card->hh_rating ne $c->{popularity}) {
 						logger->info('update it');
-						$our_card->update({ popularity => $c->{popularity} });
+						$our_card->update({ hh_rating => $c->{popularity} });
 					}
 					else {
 						logger->info('already exists');
@@ -83,7 +83,7 @@ sub run {
 				}
 				else {
 					logger->info('create it');
-					debug $c;
+					#debug $c;
 					schema->resultset('Card')->create({
 						name         => $c->{name},
 						attack       => $c->{attack},
@@ -94,7 +94,7 @@ sub run {
 						character_id => $character_id,
 						rarity_id    => MAP_RARITY->{$c->{quality}},
 						type_id      => MAP_TYPE->{$c->{type}},
-						race_id      => MAP_RACE->{$c->{race}},
+						race_id      => $c->{race} ? MAP_RACE->{$c->{race}} : undef,
 						set_id       => MAP_SET->{$c->{set}},
 						collectible  => $c->{collectible},
 						ext_id       => $c->{id},

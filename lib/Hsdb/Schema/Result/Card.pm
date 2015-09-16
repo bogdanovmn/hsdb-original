@@ -26,7 +26,7 @@ __PACKAGE__->add_columns(
   "life",
   { data_type => "tinyint", extra => { unsigned => 1 }, is_nullable => 0 },
   "descr",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "image_url",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "character_id",
@@ -127,8 +127,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-16 00:18:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DEjoU6P3gMckmYC/CHhngA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-16 21:37:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kI9fxySI8BHcTZ4AfkqQKA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

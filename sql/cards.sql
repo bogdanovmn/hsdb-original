@@ -5,7 +5,7 @@ CREATE TABLE cards (
 	mana_cost    tinyint unsigned NOT NULL,
 	attack       tinyint unsigned NOT NULL,
 	life         tinyint unsigned NOT NULL,
-	descr        varchar(255)     NOT NULL,
+	descr        varchar(255)     DEFAULT NULL,
 	image_url    varchar(255)     NOT NULL,
 	character_id tinyint unsigned DEFAULT NULL,
 	rarity_id    tinyint unsigned NOT NULL,
