@@ -18,11 +18,11 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
   },
   "name",
-  { data_type => "varchar", is_nullable => 0, size => 50 },
+  { data_type => "varchar", is_nullable => 1, size => 50 },
   "email",
   { data_type => "varchar", is_nullable => 0, size => 70 },
   "password",
-  { data_type => "varchar", is_nullable => 0, size => 20 },
+  { data_type => "char", is_nullable => 0, size => 32 },
   "updated",
   {
     data_type => "timestamp",
@@ -30,6 +30,8 @@ __PACKAGE__->add_columns(
     default_value => \"current_timestamp",
     is_nullable => 0,
   },
+  "ip",
+  { data_type => "char", is_nullable => 1, size => 15 },
 );
 __PACKAGE__->set_primary_key("id");
 __PACKAGE__->has_many(
@@ -40,8 +42,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-13 17:35:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JqQnzUe9HO2NxzBKqqDklA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-20 00:09:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vNwcuchof19Z5owvmF7Deg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -26,3 +26,5 @@ engines:
 plugins:
     "Controller":
         action_prefix: 'Action'
+
+session: "Simple"
