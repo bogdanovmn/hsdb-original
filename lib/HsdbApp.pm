@@ -89,6 +89,6 @@ any '/logout/' => sub {
 	redirect '/login/';
 };
 
-any qr{.*} => sub { controller(template => 'not_found') };
+any qr{.*} => sub { controller(template => 'not_found', layout => 'minimal') };
 
 true;
