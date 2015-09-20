@@ -49,7 +49,9 @@ post '/register/' => sub {
 
 get  '/login/' => sub { controller(template => 'login', action => 'Login::Form') };
 post '/login/' => sub { 
-	if (controller(action => 'Login::Post')) {
+	my $user_id = controller(action => 'Login::Post');
+	if ($user_id) {
+		session user_id => $user_id;
 		redirect '/';
 	}
 	else {

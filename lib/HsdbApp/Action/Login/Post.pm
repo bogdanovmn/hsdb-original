@@ -29,7 +29,7 @@ sub main {
 	})->single;
 
 	return $user
-		? 1
+		? $user->id
 		: $self->error("Пользователь не найден");
 }
 
