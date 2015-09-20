@@ -8,3 +8,12 @@
 </head>
 
 <body>
+
+<TMPL_IF user_id>
+	<div class=top_menu>
+		<div class=login>
+			<TMPL_VAR user_name>
+			<a href='/logout/'>X</a>
+		</div>
+	</div>
+</TMPL_IF>
