@@ -29,4 +29,6 @@ plugins:
     "Controller":
         action_prefix: 'Action'
 
-session: "Simple"
+session: "DBI"
+session_options:
+    table: "session"

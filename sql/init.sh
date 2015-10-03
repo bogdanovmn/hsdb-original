@@ -9,6 +9,7 @@ FILES="
 	users.sql
 	collections.sql
 	card2abilities.sql
+	sessions.sql
 "
 for file in $FILES; do
 	echo "[INSTALLING $file]"

@@ -23,8 +23,15 @@ use HsdbApp::Action::Login::Post;
 sub show_error { controller(template => 'error', action => 'Error') }
 
 hook 'before' => sub {
-	var user_id  => Dancer::session('user_id');
+	set 'session_options' => { 
+		dbh => sub { schema->storage->dbh },
+		table => 'session',
+	};
+
+	var user_id  => session('user_id');
 	var last_err => {msg => ''};
+
+	warning vars->{user_id};
 
 	my $logged_user_area = request->path !~ '^/(login|register)/$';
 	if (vars->{user_id}) {
@@ -61,25 +68,26 @@ hook 'before_template_render' => sub {
 
 get '/' => sub { controller(template => 'index', action => 'Index') };
 
-get  '/register/' => sub { controller(template => 'register', action => 'Register::Form') };
+get  '/register/' => sub { controller(template => 'register', action => 'Register::Form', layout => 'minimal') };
 post '/register/' => sub { 
 	if (controller(action => 'Register::Post')) {
 		redirect '/';
 	}
 	else {
-		controller(template => 'register', action => 'Register::Form');
+		controller(template => 'register', action => 'Register::Form', layout => 'minimal');
 	}
 };
 
-get  '/login/' => sub { controller(template => 'login', action => 'Login::Form') };
+get  '/login/' => sub { controller(template => 'login', action => 'Login::Form', layout => 'minimal') };
 post '/login/' => sub { 
 	my $user_id = controller(action => 'Login::Post');
 	if ($user_id) {
 		session user_id => $user_id;
+		session->flush;
 		redirect '/';
 	}
 	else {
-		controller(template => 'login', action => 'Login::Form');
+		controller(template => 'login', action => 'Login::Form', layout => 'minimal');
 	}
 };
 

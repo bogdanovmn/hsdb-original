@@ -23,6 +23,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 70 },
   "password",
   { data_type => "char", is_nullable => 0, size => 32 },
+  "ip",
+  { data_type => "char", is_nullable => 1, size => 15 },
   "updated",
   {
     data_type => "timestamp",
@@ -30,10 +32,9 @@ __PACKAGE__->add_columns(
     default_value => \"current_timestamp",
     is_nullable => 0,
   },
-  "ip",
-  { data_type => "char", is_nullable => 1, size => 15 },
 );
 __PACKAGE__->set_primary_key("id");
+__PACKAGE__->add_unique_constraint("email", ["email"]);
 __PACKAGE__->has_many(
   "collections",
   "Hsdb::Schema::Result::Collection",
@@ -42,8 +43,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2015-09-20 00:09:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vNwcuchof19Z5owvmF7Deg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2015-10-03 16:22:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:y7tx6LUcjCoOFGbcMxVKoA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
