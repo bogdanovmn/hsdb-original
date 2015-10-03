@@ -19,12 +19,14 @@ use HsdbApp::Action::Register::Post;
 use HsdbApp::Action::Login::Form;
 use HsdbApp::Action::Login::Post;
 
+use HsdbApp::Action::Collection;
+
 
 sub show_error { controller(template => 'error', action => 'Error') }
 
 hook 'before' => sub {
 	set 'session_options' => { 
-		dbh => sub { schema->storage->dbh },
+		dbh   => sub { schema->storage->dbh },
 		table => 'session',
 	};
 
@@ -95,6 +97,13 @@ post '/login/' => sub {
 any '/logout/' => sub {
 	session->destroy;
 	redirect '/login/';
+};
+
+get qr{/collection/(in|out)/} => sub {
+	my ($type) = splat;
+
+	var type => $type;
+	controller(template => 'collection', action => 'Collection');
 };
 
 any qr{.*} => sub { controller(template => 'not_found', layout => 'minimal') };

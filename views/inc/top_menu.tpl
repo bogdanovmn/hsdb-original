@@ -2,7 +2,9 @@
 	<div id=top_menu>
 		<div id=links>
 			.::
-			<a href='/collection/'>Пополнить коллекцию</a>
+			<a href='/collection/in/'>Моя коллекция</a>
+			::
+			<a href='/collection/out/'>Пополнить коллекцию</a>
 			::
 			<a href='/booster/'>Открыть бустер</a>
 			::.
