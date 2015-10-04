@@ -11,4 +11,5 @@ div.main { width: 1000px; margin: 0 auto; }
 	#left_menu { float: left; width: 20%; }
 	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0px 10px; }
 
-div.card { display: inline; }
+div.card { display: inline-block; text-align: center; }
+div.counter { display: inline; border: 1px solid gray; padding: 5px 7px; }

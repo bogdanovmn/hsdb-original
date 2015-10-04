@@ -14,7 +14,7 @@ my $__HELPERS;
 sub main {
 	my ($self) = @_;
 
-	my $character_id = $self->params->{character_id} || 1;
+	my $character_id = $self->params->{character_id} // 0;
 
 	$self->_load_all_cards;
 
@@ -30,7 +30,7 @@ sub main {
 	my @card_ids = $self->params->{type} eq 'out'
 		? List::Compare->new(
 			[ @{$__ALL_CARDS->{by_character}->{$character_id}} ],
-			[ map { $_->{card_id} } keys %collection ],
+			[ keys %collection ],
 		  )->get_Lonly
 		: keys %collection; 
 	
@@ -38,7 +38,13 @@ sub main {
 		cards => [ 
 			sort { $a->{mana_cost} <=> $b->{mana_cost} or $a->{id} <=> $b->{id} }
 			grep { $_->{set_id} ne 1 }
-			map  { $__ALL_CARDS->{by_id}->{$_} } @card_ids 
+			map  { 
+				my $data = $__ALL_CARDS->{by_id}->{$_};
+				$data->{norm_count} = $collection{$_} ? $collection{$_}->{norm_count} : 0;
+				$data->{gold_count} = $collection{$_} ? $collection{$_}->{gold_count} : 0;
+				$data;
+			} 
+			@card_ids 
 		],
 		filter_character => $self->_prepare_filter('character', $character_id),
 		#filter_character => $self->_prepare_filter('character', $character_id),
@@ -54,6 +60,10 @@ sub _load_helpers {
 		$__HELPERS->{lc $name} = {
 			map { $_->{id} => $_->{name} }
 			schema->resultset($name)->search({}, {AS_HASH})->all
+		};
+
+		if ($name eq 'Character') {
+			$__HELPERS->{lc $name}->{0} = '!Любой';
 		}
 	}
 }
@@ -64,7 +74,8 @@ sub _prepare_filter {
 	$self->_load_helpers;
 
 	return [
-		map {{
+		sort { $a->{name} cmp $b->{name} }
+		map  {{
 			name     => $__HELPERS->{$helper_name}->{$_},
 			id       => $_,
 			selected => $_ eq $selected_id ? 1 : 0,
@@ -83,7 +94,8 @@ sub _load_all_cards {
 			->all;
 
 		foreach my $c (@cards) {
-			push @{$__ALL_CARDS->{by_character}->{$c->{character_id} || 0}}, $c->{id};
+			$c->{character_id} ||= 0;
+			push @{$__ALL_CARDS->{by_character}->{$c->{character_id}}}, $c->{id};
 			$__ALL_CARDS->{by_id}->{$c->{id}} = $c;
 		}
 	}

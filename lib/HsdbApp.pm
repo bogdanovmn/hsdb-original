@@ -107,15 +107,15 @@ get qr{/collection/(in|out)/} => sub {
 	controller(template => 'collection', action => 'Collection');
 };
 
-get qr{/(add|del)/(common|gold)/([1-9]\d*)/} => sub {
-	my ($action, $card_view, $card_id) = splat;
+get qr{/count/(norm|gold)/([1-9]\d*)/([0-2])/} => sub {
+	my ($card_view, $card_id, $count) = splat;
 
-	var action    => $action;
 	var card_view => $card_view;
 	var card_id   => $card_id;
+	var count     => $count;
 
 	controller(action => 'Collection::Modify');
-}
+};
 
 any qr{.*} => sub { controller(template => 'not_found', layout => 'minimal') };
 
