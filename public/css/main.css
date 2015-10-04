@@ -10,3 +10,5 @@ div.main { width: 1000px; margin: 0 auto; }
 #mid_area { width: 100%; }
 	#left_menu { float: left; width: 20%; }
 	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0px 10px; }
+
+div.card { display: inline; }

@@ -20,6 +20,7 @@ use HsdbApp::Action::Login::Form;
 use HsdbApp::Action::Login::Post;
 
 use HsdbApp::Action::Collection;
+use HsdbApp::Action::Collection::Modify;
 
 
 sub show_error { controller(template => 'error', action => 'Error') }
@@ -105,6 +106,16 @@ get qr{/collection/(in|out)/} => sub {
 	var type => $type;
 	controller(template => 'collection', action => 'Collection');
 };
+
+get qr{/(add|del)/(common|gold)/([1-9]\d*)/} => sub {
+	my ($action, $card_view, $card_id) = splat;
+
+	var action    => $action;
+	var card_view => $card_view;
+	var card_id   => $card_id;
+
+	controller(action => 'Collection::Modify');
+}
 
 any qr{.*} => sub { controller(template => 'not_found', layout => 'minimal') };
 
