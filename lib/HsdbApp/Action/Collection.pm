@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 
 use Hsdb::DB;
+use HsdbApp::Menu;
 use List::Compare;
 use Utils;
 
@@ -48,6 +49,7 @@ sub main {
 		],
 		filter_character => $self->_prepare_filter('character', $character_id),
 		#filter_character => $self->_prepare_filter('character', $character_id),
+		menu => HsdbApp::Menu->init('collection_'. $self->params->{type})->prepare,
 	};
 }
 

@@ -1,13 +1,13 @@
 <TMPL_IF user_id>
 	<div id=top_menu>
 		<div id=links>
-			.::
-			<a href='/collection/in/'>Моя коллекция</a>
-			::
-			<a href='/collection/out/'>Пополнить коллекцию</a>
-			::
-			<a href='/booster/'>Открыть бустер</a>
-			::.
+			.::<TMPL_LOOP menu>
+				<TMPL_IF current>
+					<b><TMPL_VAR title></b>
+				<TMPL_ELSE>
+					<a href='<TMPL_VAR url>'><TMPL_VAR title></a>
+				</TMPL_IF>
+			::</TMPL_LOOP>.
 		</div>
 		<div id=user_info>
 			.::

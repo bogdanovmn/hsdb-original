@@ -1,9 +1,9 @@
-a,body,table,tr,td,li,p,input,textarea,pre{font-family:verdana,arial;font-size:8pt;color:#101610;padding:0;margin:0}
+a,body,table,tr,td,li,p,input,textarea,pre{font-family:verdana,arial;color:#101610;padding:0;margin:0}
 table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
 
 div.main { width: 1000px; margin: 0 auto; }
 
-#top_menu { position: static;  }
+#top_menu { position: static; font-size: 100%; }
 	#links     { float: left;  width: 70%; background: #ddd; padding: 5px; }
 	#user_info { padding: 5px; width: 30%; background: #ddd; margin-left: 70%; text-align: right;}
 
@@ -12,4 +12,8 @@ div.main { width: 1000px; margin: 0 auto; }
 	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0px 10px; }
 
 div.card { display: inline-block; text-align: center; }
-div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-align: center; }
+div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-align: center; cursor: pointer; }
+
+
+div.filter div.values   { padding-left: 20px; }
+div.filter div.values p { margin: 5px 0px; }
