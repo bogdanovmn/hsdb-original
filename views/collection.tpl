@@ -9,6 +9,8 @@
 
 <script>
 
+	var changes = {};
+
 	$('div.card div.counter').click(
 		function(event) {
 			console.log(event.target.innerHTML);
@@ -20,16 +22,30 @@
 				count = 0;
 			}
 
+			if (!changes[id]) { 
+				setTimeout(
+					function() {
+						apply_changes(id);
+					},
+					3000
+				);
+			}
 		
+			changes[id][type] = count;
+			$('#' + type + '_' + id).text(count);
 		
 			$.ajax({ 
 				url: '/count/' + type + '/' + id + '/' + count + '/',
 				success: function(result) {
-					$('#' + type + '_' + id).text(count);
+				//	$('#' + type + '_' + id).text(count);
 				}
 			});
 		}
 	);
+
+	function apply_changes() {
+
+	}
 
 
 </script>
