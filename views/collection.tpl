@@ -13,7 +13,6 @@
 
 	$('div.card div.counter').click(
 		function(event) {
-			console.log(event.target.innerHTML);
 			var type = event.target.id.split("_")[0];
 			var id   = event.target.id.split("_")[1];
 			var count= parseInt(event.target.innerHTML) + 1;
@@ -22,29 +21,35 @@
 				count = 0;
 			}
 
-			if (!changes[id]) { 
+			if (typeof changes[id] == 'undefined') { 
+				//console.log("init change for id=" + id + " type=" + type + " count=" + count);
 				setTimeout(
 					function() {
 						apply_changes(id);
 					},
-					3000
+					3500
 				);
+				changes[id] = {};
 			}
 		
 			changes[id][type] = count;
 			$('#' + type + '_' + id).text(count);
-		
-			$.ajax({ 
-				url: '/count/' + type + '/' + id + '/' + count + '/',
-				success: function(result) {
-				//	$('#' + type + '_' + id).text(count);
-				}
-			});
 		}
 	);
 
-	function apply_changes() {
-
+	function apply_changes(id) {
+		console.log(id);
+		for (var type in changes[id]) {
+			var url = '/count/' + type + '/' + id + '/' + changes[id][type] + '/';
+			$.ajax({ 
+				url: url,
+				success: function(result) {
+					//$('#' + type + '_' + id).text(count);
+					//console.log('[OK] ' + url);
+				}
+			});
+		}
+		delete changes[id];
 	}
 
 
