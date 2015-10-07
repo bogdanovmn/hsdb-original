@@ -17,3 +17,7 @@ div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-al
 
 div.filter div.values   { padding-left: 20px; }
 div.filter div.values p { margin: 5px 0px; }
+
+div.counter    { font-weight: bold; }
+div.norm_count { color: gray; border: 1px solid gray; }
+div.gold_count { color: gold; border: 1px solid gold; }

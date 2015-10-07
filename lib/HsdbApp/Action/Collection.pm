@@ -48,8 +48,7 @@ sub main {
 			@card_ids 
 		],
 		filter_character => $self->_prepare_filter('character', $character_id),
-		#filter_character => $self->_prepare_filter('character', $character_id),
-		menu => HsdbApp::Menu->init('collection_'. $self->params->{type})->prepare,
+		menu             => HsdbApp::Menu->init('collection_'. $self->params->{type})->prepare,
 	};
 }
 
