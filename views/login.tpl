@@ -1,3 +1,5 @@
+<h1>Вход</h1>
+
 <TMPL_IF error_msg>
 	<div class=error_msg>
 		<TMPL_VAR error_msg>
@@ -6,14 +8,16 @@
 
 <div class=login>
 	<form method=post>
-		<p>E-mail
-		<br>
-		<input type=text name=email>
-		<p>Пароль
-		<br>
-		<input type=password name=password value=''>
-		<p>
-		<input type=submit name=login_submit value='Войти'>
-		<a href='/register/'>Регистрация</a>
+		<table>
+		<tr>
+			<td>E-mail
+			<td><input type=text name=email>
+		<tr>
+			<td>Пароль
+			<td><input type=password name=password value=''>
+		<tr>
+			<td><input type=submit name=login_submit value='  Войти  '>
+			<td><a href='/register/'>Регистрация</a>
+		</table>
 	</form>
 </div>

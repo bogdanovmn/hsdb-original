@@ -1,23 +1,27 @@
+<h1>Регистрация</h1>
+
 <TMPL_INCLUDE 'inc/error_msg.tpl'>
 
 <div class=register>
 	<form method=post>
-		<p>E-mail
-		<br>
-		<input type=text name=email>
-		<p>Пароль (не от мыла)
-		<br>
-		<input type=password name=password value=''>
-		<p>Пароль еще разок
-		<br>
-		<input type=password name=password_check value=''>
-		<p>Два минус три плюс пять
-		<br>
-		<input type=text name=zombi_check>
-		<p>Как к Вам обращаться
-		<br>
-		<input type=text name=name>
-		<p>
-		<input type=submit name=register_submit value='Зарегиться'>
+		<table>
+		<tr>
+			<td>E-mail
+			<td><input type=text name=email>
+		<tr>
+			<td>Пароль (не от мыла)
+			<td><input type=password name=password value=''>
+		<tr>
+			<td>Пароль еще разок
+			<td><input type=password name=password_check value=''>
+		<tr>
+			<td>Два минус три плюс пять
+			<td><input type=text name=zombi_check>
+		<tr>
+			<td>Как к Вам обращаться
+			<td><input type=text name=name>
+		<tr>
+			<td colspan=2><input type=submit name=register_submit value='  Готово  '>
+		</table>
 	</form>
 </div>

@@ -26,7 +26,7 @@
 				<TMPL_IF selected>
 					<b><TMPL_VAR name></b>
 				<TMPL_ELSE>
-					<a href="?rarity_id=<TMPL_VAR id>">
+					<a href="?rarity_id=<TMPL_VAR id>&<TMPL_VAR current_filter_wo_rarity_id>">
 						<TMPL_VAR name>
 					</a>
 				</TMPL_IF>

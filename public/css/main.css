@@ -14,7 +14,6 @@ div.main { width: 1000px; margin: 0 auto; }
 div.card { display: inline-block; text-align: center; }
 div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-align: center; cursor: pointer; }
 
-
 div.filter               { font-size: 13px; }
 div.filter b             { color: gray; }
 div.filter div.values    { padding-left: 20px; }
@@ -26,3 +25,8 @@ span.progress { color: blue; font-size: 70%; }
 div.counter    { font-weight: bold; }
 div.norm_count { color: gray; border: 1px solid gray; }
 div.gold_count { color: gold; border: 1px solid gold; }
+
+form table    { margin: 0 auto; }
+form table td { padding: 10px; }
+
+

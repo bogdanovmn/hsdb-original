@@ -69,7 +69,10 @@ sub main {
 	return {
 		cards => [ 
 			sort { $a->{mana_cost} <=> $b->{mana_cost} or $a->{id} <=> $b->{id} }
-			grep { $_->{set_id} ne 1 }
+			grep { 
+				$_->{set_id} ne 1 
+				and (not $rarity_id or $rarity_id eq $_->{rarity_id})
+			}
 			map  { 
 				my $data = $__ALL_CARDS->{by_id}->{$_};
 				$data->{norm_count} = $collection{$_} ? $collection{$_}->{norm_count} : 0;
