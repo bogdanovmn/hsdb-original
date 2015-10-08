@@ -39,7 +39,7 @@ hook 'before' => sub {
 	my $logged_user_area = request->path !~ '^/(login|register)/$';
 	if (vars->{user_id}) {
 		if (not $logged_user_area) {
-			redirect '/';
+			redirect '/collection/out/';
 		}
 
 		my $user = schema->resultset('User')->find(vars->{user_id});
@@ -69,7 +69,7 @@ hook 'before_template_render' => sub {
 # Routes
 ###########
 
-get '/' => sub { controller(template => 'index', action => 'Index') };
+get '/' => sub { redirect '/collection/out/' };
 
 get  '/register/' => sub { controller(template => 'register', action => 'Register::Form', layout => 'minimal') };
 post '/register/' => sub { 

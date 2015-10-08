@@ -15,8 +15,13 @@ div.card { display: inline-block; text-align: center; }
 div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-align: center; cursor: pointer; }
 
 
-div.filter div.values   { padding-left: 20px; }
-div.filter div.values p { margin: 5px 0px; }
+div.filter               { font-size: 13px; }
+div.filter b             { color: gray; }
+div.filter div.values    { padding-left: 20px; }
+div.filter div.values td { padding: 4px 3px; }
+div.filter div.values p  { margin: 4px 3px; }
+
+span.progress { color: blue; font-size: 70%; }
 
 div.counter    { font-weight: bold; }
 div.norm_count { color: gray; border: 1px solid gray; }
