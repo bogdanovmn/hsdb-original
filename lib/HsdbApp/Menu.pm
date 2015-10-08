@@ -31,7 +31,7 @@ sub _menu {
 	return (
 		{ id => 'collection_in' , title => 'Моя коллекция'      , url => '/collection/in/'  },
 		{ id => 'collection_out', title => 'Пополнить коллекцию', url => '/collection/out/' },
-		{ id => 'booster'       , title => 'Купить бустер'      , url => '/booster/'        },
+#		{ id => 'booster'       , title => 'Купить бустер'      , url => '/booster/'        },
 	);
 }
 

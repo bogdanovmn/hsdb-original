@@ -43,7 +43,10 @@ sub main {
 		? List::Compare->new(
 			[ @{$__ALL_CARDS->{by_character}->{$character_id}} ],
 			[ 
-				grep { ($collection{$_}->{norm_count} + $collection{$_}->{gold_count}) > 1 }
+				grep { 
+					($collection{$_}->{norm_count} + $collection{$_}->{gold_count}) 
+						> (1 - (_is_legend($_) ? 1 : 0)) 
+				}
 				keys %collection
 			],
 		  )->get_Lonly
@@ -81,6 +84,7 @@ sub main {
 			} 
 			@card_ids 
 		],
+		type               => $type,
 		collection_percent => int(100 * $collection_total / $total),
 		filter_character   => $filter_character,
 		filter_rarity      => $self->_prepare_filter('rarity'   , $rarity_id),
@@ -139,7 +143,8 @@ sub _load_helpers {
 		}
 
 		if ($name eq 'Rarity') {
-			$__HELPERS->{lc $name}->{1} = '!Любая';
+			$__HELPERS->{lc $name}->{0} = '!Любая';
+			delete $__HELPERS->{lc $name}->{1};
 		}
 	}
 }

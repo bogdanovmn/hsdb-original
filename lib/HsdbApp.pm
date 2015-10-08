@@ -34,8 +34,6 @@ hook 'before' => sub {
 	var user_id  => session('user_id');
 	var last_err => {msg => ''};
 
-	warning vars->{user_id};
-
 	my $logged_user_area = request->path !~ '^/(login|register)/$';
 	if (vars->{user_id}) {
 		if (not $logged_user_area) {

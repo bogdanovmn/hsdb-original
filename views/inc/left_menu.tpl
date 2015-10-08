@@ -4,8 +4,8 @@
 			<table>
 			<TMPL_LOOP filter_character>
 				<tr>
-				<td>
-					<span class=progress><TMPL_VAR progress>%</span>
+				<td class=progress>
+					<span class="progress progress_<TMPL_VAR type>"><TMPL_VAR progress>%</span>
 				<td>
 					<TMPL_IF selected>
 						<b><TMPL_VAR name></b>

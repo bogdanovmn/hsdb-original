@@ -16,7 +16,7 @@
 			.::
 			<TMPL_VAR user_name>
 			::
-			<a href='/logout/'>X</a>
+			<a class=logout href='/logout/'>X</a>
 			::.
 		</div>
 	</div>
