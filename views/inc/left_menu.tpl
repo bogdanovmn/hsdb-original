@@ -21,23 +21,31 @@
 		</div>
 	</div>
 	
-	<div class=filter><b>Редкость</b>
+	<div class=filter>
+		<b>Редкость</b>
+		<TMPL_IF rarity_id>
+			<a class=reset href="?rarity_id=0&<TMPL_VAR current_filter_wo_rarity_id>">сбросить</a>
+		</TMPL_IF>
+
 		<div class=values>
 			<TMPL_LOOP filter_rarity>
-				<p>
 				<TMPL_IF selected>
-					<b><TMPL_VAR name></b>
+					<div class="rarity_filter rarity_filter_<TMPL_VAR id>_selected"></div>
 				<TMPL_ELSE>
-					<a href="?rarity_id=<TMPL_VAR id>&<TMPL_VAR current_filter_wo_rarity_id>">
-						<TMPL_VAR name>
+					<a class=rarity_filter href="?rarity_id=<TMPL_VAR id>&<TMPL_VAR current_filter_wo_rarity_id>">
+						<div class="rarity_filter rarity_filter_<TMPL_VAR id> selected"></div>
 					</a>
 				</TMPL_IF>
-				</p>
 			</TMPL_LOOP>
 		</div>
 	</div>
 
-	<div class=filter><b>Набор</b>
+	<div class=filter>
+		<b>Набор</b>
+		<TMPL_IF set_id>
+			<a class=reset href="?set_id=0&<TMPL_VAR current_filter_wo_set_id>">сбросить</a>
+		</TMPL_IF>
+
 		<div class=values>
 			<table>
 			<TMPL_LOOP filter_set>

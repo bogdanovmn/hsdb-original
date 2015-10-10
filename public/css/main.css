@@ -16,7 +16,7 @@ div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-al
 
 div.filter               { font-size: 13px; }
 div.filter b             { color: gray; }
-div.filter div.values    { padding-left: 20px; }
+div.filter div.values    { padding-left: 20px; margin: 5px 0px; }
 div.filter div.values td { padding: 4px 3px; }
 div.filter div.values p  { margin: 4px 3px; }
 
@@ -34,3 +34,15 @@ form table    { margin: 0 auto; }
 form table td { padding: 10px; }
 
 a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
+a.rarity_filter { text-decoration: none; }
+a.reset { text-decoration: none; border-bottom: 1px dotted red; font-size: 70%; color: red; }
+
+div.rarity_filter   { width: 17px; height: 17px; display: inline-block; cursor: pointer; border: 3px solid white; } 
+div.rarity_filter_2          { border-color: gray; } 
+div.rarity_filter_2_selected { border-color: gray; background: gray; } 
+div.rarity_filter_3          { border-color: blue; } 
+div.rarity_filter_3_selected { border-color: blue; background: blue; } 
+div.rarity_filter_4          { border-color: magenta; } 
+div.rarity_filter_4_selected { border-color: magenta; background: magenta; } 
+div.rarity_filter_5          { border-color: gold; } 
+div.rarity_filter_5_selected { border-color: gold; background: gold; } 

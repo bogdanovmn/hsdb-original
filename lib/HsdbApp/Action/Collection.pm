@@ -139,6 +139,9 @@ sub _prepare_filter_params {
 	foreach my $name (keys %result) {
 		$result{'current_filter_wo_'.$name} = join '&', @{$result{$name}};
 		delete $result{$name};
+		if ($p{$name}) {
+			$result{$name} = $p{$name}; 
+		}
 	}
 	$result{current_filter} = join '&', @full;
 
@@ -157,11 +160,10 @@ sub _load_helpers {
 		};
 
 		if ($name eq 'Character') {
-			$__HELPERS->{lc $name}->{0} = '!Любой';
+			$__HELPERS->{lc $name}->{0} = '< Любой >';
 		}
 
 		if ($name eq 'Rarity') {
-			$__HELPERS->{lc $name}->{0} = '!Любая';
 			delete $__HELPERS->{lc $name}->{1};
 		}
 
@@ -172,7 +174,6 @@ sub _load_helpers {
 					grep { $_ !~ /^(2|7|9)$/ }
 					keys %{$__HELPERS->{$n}}
 				);
-			$__HELPERS->{$n}->{0} = '!Любой';
 		}
 	}
 }
@@ -183,7 +184,7 @@ sub _prepare_filter {
 	$self->_load_helpers;
 
 	return [
-		sort { $a->{name} cmp $b->{name} }
+		sort { $a->{id} <=> $b->{id} }
 		map  {{
 			name     => $__HELPERS->{$helper_name}->{$_},
 			id       => $_,
