@@ -5,7 +5,9 @@
 			<TMPL_LOOP filter_character>
 				<tr>
 				<td class=progress>
-					<span class="progress progress_<TMPL_VAR type>"><TMPL_VAR progress>%</span>
+					<TMPL_IF progress>
+						<span class="progress progress_<TMPL_VAR type>"><TMPL_VAR progress>%</span>
+					</TMPL_IF>
 				<td>
 					<TMPL_IF selected>
 						<b><TMPL_VAR name></b>
@@ -35,4 +37,25 @@
 		</div>
 	</div>
 
+	<div class=filter><b>Набор</b>
+		<div class=values>
+			<table>
+			<TMPL_LOOP filter_set>
+				<tr>
+				<td class=progress>
+					<TMPL_IF progress>
+						<span class="progress progress_<TMPL_VAR type>"><TMPL_VAR progress>%</span>
+					</TMPL_IF>
+				<td>
+					<TMPL_IF selected>
+						<b><TMPL_VAR name></b>
+					<TMPL_ELSE>
+						<a href="?set_id=<TMPL_VAR id>&<TMPL_VAR current_filter_wo_set_id>">
+							<TMPL_VAR name>
+						</a>
+					</TMPL_IF>
+			</TMPL_LOOP>
+			</table>
+		</div>
+	</div>
 </div>

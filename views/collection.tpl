@@ -31,7 +31,7 @@
 					function() {
 						apply_changes(id);
 					},
-					3500
+					1500
 				);
 				changes[id] = {};
 			}
